@@ -1,13 +1,20 @@
-<app-custom-button
-  (onButtonTap)="onSignUp($event)"
-  bgColor="bg-neutral-900"
-  btnText="Sign Up"
-  radius="rounded-full"
-/>
-<app-custom-button
-  (onButtonTap)="onContinue($event)"
-  [isOutline]="true"
-  bgColor="bg-teal-500"
-  btnText="Continue"
-  radius=""
-/>
+<!-- <app-custom-button (onButtonTap)="callApi()" btnText="Call Api">
+</app-custom-button>
+
+@if (users.length == 0) {
+<h1>No users Found</h1>
+} @if(users.length > 0) { @for (user of users; track $index) {
+<h1>{{ user.first_name }} {{ user.last_name }}</h1>
+} } -->
+
+<div class="h-screen w-screen bg-neutral-100 justify-between flex flex-row">
+  <div class="bg-white w-[20%]">
+    <!-- <app-suggestions [maxUserLimit]="2" class="w-full"></app-suggestions> -->
+
+  </div>
+  <div class="grow"></div>
+
+  <div class="bg-white w-[20%] flex flex-column px-4 py-4">
+    <app-suggestions [maxUserLimit]="5" class="w-full"></app-suggestions>
+  </div>
+</div>

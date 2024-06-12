@@ -11,7 +11,7 @@ export class CustomButtonComponent {
   @Input() btnText: string = 'Custom Button';
   @Input() isOutline: boolean = false;
   @Input() textSize: string = 'text-base';
-  @Input() bgColor: string = 'neutral';
+  @Input() bgColor: string = 'bg-neutral-900';
   @Input() radius: string = 'rounded';
   @Output() onButtonTap = new EventEmitter<string>();
 
@@ -20,7 +20,7 @@ export class CustomButtonComponent {
       this.isOutline
         ? 'border border-neutral-900 hover:bg-neutral-200'
         : `${this.bgColor} text-white  hover:bg-neutral-800`
-    }  ${this.textSize} px-4 py-2 ${this.radius}`;
+    }  ${this.textSize} px-2.5 py-1 ${this.radius}`;
   }
 
   onButtonClick() {
