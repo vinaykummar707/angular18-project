@@ -3,6 +3,8 @@ import { Component, Input } from '@angular/core';
 import { User, UsersResponse } from '../types';
 import { CustomButtonComponent } from '../custom-button/custom-button.component';
 import { UserTileComponent } from '../user-tile/user-tile.component';
+import { SuggestionsService } from '../suggestions.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-suggestions',
@@ -12,20 +14,36 @@ import { UserTileComponent } from '../user-tile/user-tile.component';
   styleUrl: './suggestions.component.css',
 })
 export class SuggestionsComponent {
-  @Input() maxUserLimit: number = 3;
+  @Input() maxUserLimit!: number;
   users: User[] = [];
-  usersLimit: number = 3;
-  constructor(private http: HttpClient) {
-    this.http.get('https://reqres.in/api/users?page=1').subscribe((value) => {
-      console.log(value, 'suugestions comp');
-      const res: UsersResponse = value as UsersResponse;
-      this.users = res.data;
-    });
-    this.usersLimit = this.maxUserLimit;
+  usersLimit!: number;
+  pageNumber: number = 1;
+
+  constructor(
+    private suggestionService: SuggestionsService,
+    private userService: UserService
+  ) {}
+
+  ngOnInit() {
+    this.getUsers();
+    console.log(this.users);
+  }
+
+  getUsers() {
+    this.suggestionService
+      .getUsersByPage(this.pageNumber)
+      .subscribe((value) => {
+        // value.data.forEach((user) => this.users.push(user));
+        if (value.data) this.users = [...this.users, ...value.data];
+
+        console.log([...this.users]);
+      });
   }
 
   onSeeMore() {
-    this.usersLimit = this.users.length;
+    // this.usersLimit = this.users.length;
+    this.pageNumber += 1;
+    this.getUsers();
   }
 
   onSeeLess() {
@@ -36,7 +54,8 @@ export class SuggestionsComponent {
     console.log('tapped', user);
   }
 
-  onFollowClicked(event: User) {
-    console.log('now  i am following', event);
+  onFollowClicked(user: User) {
+    console.log('now  i am following', user);
+    this.userService.increaseFollowing(user);
   }
 }

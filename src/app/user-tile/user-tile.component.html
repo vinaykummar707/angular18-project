@@ -13,10 +13,19 @@
     </div>
   </div>
 
+  @if (showButtons) { @if (isFollowing) {
+  <app-custom-button
+    btnText="Following"
+    radius="rounded-full"
+    textSize="text-xs"
+    [isOutline]="true"
+  ></app-custom-button>
+  } @if (!isFollowing) {
   <app-custom-button
     (onButtonTap)="onTap(user)"
     btnText="Follow"
     radius="rounded-full"
     textSize="text-xs"
   ></app-custom-button>
+  } }
 </div>

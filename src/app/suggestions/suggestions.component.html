@@ -2,21 +2,19 @@
   <h1 class="text-md font-semibold">Suggestions</h1>
 
   <div class="flex flex-col gap-2.5">
-    @for (user of users; track $index; let i = $index) { @if(i < usersLimit &&
-    usersLimit <= users.length) {
+    @for (user of users; track $index; let i = $index) {
 
     <app-user-tile
       (follow)="onFollowClicked($event)"
       [user]="user"
+      [showButtons]="true"
     ></app-user-tile>
-
-    } }
+    }
   </div>
 
-  @if(usersLimit === users.length) {
+  <!-- @if(usersLimit === users.length) {
   <p (click)="onSeeLess()" class="text-xs text-neutral-500">See Less</p>
-  } @if(usersLimit < users.length) {
+  } -->
 
   <p (click)="onSeeMore()" class="text-xs text-neutral-500">See More</p>
-  }
 </div>

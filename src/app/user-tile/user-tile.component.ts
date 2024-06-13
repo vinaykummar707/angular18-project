@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { User } from '../types';
 import { CustomButtonComponent } from '../custom-button/custom-button.component';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-user-tile',
@@ -16,9 +17,16 @@ export class UserTileComponent {
     avatar: '',
   };
 
+  @Input() showButtons!: boolean;
+
+  isFollowing: boolean = false;
+
   @Output() follow = new EventEmitter<User>();
 
+  constructor() {}
+
   onTap(user: User) {
+    this.isFollowing = true;
     this.follow.emit(user);
   }
 }
