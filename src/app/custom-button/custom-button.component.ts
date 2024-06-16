@@ -19,7 +19,7 @@ export class CustomButtonComponent {
     return `${
       this.isOutline
         ? 'border border-neutral-900 hover:bg-neutral-200'
-        : `${this.bgColor} text-white  hover:bg-neutral-800`
+        : `${this.bgColor} text-white font-medium  hover:bg-neutral-800`
     }  ${this.textSize} px-2.5 py-1 ${this.radius}`;
   }
 

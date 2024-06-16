@@ -70,139 +70,139 @@
 </div> -->
 
 <div
-  class="h-screen w-screen gap-0.5 overflow-hidden bg-neutral-100 flex flex-col"
+  class="h-screen w-screen overflow-hidden  bg-neutral-100 flex flex-col"
 >
-  <div class="h-14 shrink-0 bg-white"></div>
-  <div class="grow bg-neutral-100 gap-0.5 flex overflow-hidden flex-row">
-    <div class="bg-white shrink-0 w-[20%]"></div>
-    <div class="overflow-y-scroll flex flex-col gap-2 p-4 grow">
+  <div class="h-14 shrink-0 border-b border-neutral-200 shadow-sm flex justify-center flex-row  bg-white">
+
+  </div>
+  <div class="grow  bg-neutral-100 py-2   justify-center flex overflow-hidden flex-row">
+    <div class="bg-white shadow-sm border border-neutral-200 rounded-lg w-[17%] shrink-0 "></div>
+    <div class="overflow-y-scroll   flex flex-col gap-2 px-2  w-[32%]">
+
+      <div class="flex flex-row justify-between ">
+        <h1 class="text-md font-[400]">Trending Now</h1>
+
+        
       <app-custom-button
-        (onButtonTap)="toggleCreatePost()"
-        class="self-end"
-        btnText="Create Post"
-        bgColor="bg-lime-700"
-        radius="rounded-full"
-        textSize="text-sm"
-      ></app-custom-button>
+      (onButtonTap)="toggleCreatePost()"
+      class="self-end"
+      btnText="Create Post"
+      radius="rounded-lg"
+      textSize="text-xs"
+    ></app-custom-button>
+      </div>
+
 
       @if (showCreatePost) {
       <div
-        class="bg-white flex flex-col rounded-xl shadow-sm items-start gap-2 p-4"
+        class="bg-white flex flex-col rounded-xl shadow-sm items-start gap-2 px-2 py-4"
       >
-        <h1 class="text-sm font-semibold">Create Post</h1>
         <textarea
           [(ngModel)]="description"
          
           type="text"
-          class="outline-none w-full text-wrap p-4 text-sm rounded-xl h-40 border"
+          class="outline-none w-full text-wrap p-2 text-xs rounded-xl h-20 border"
           name=""
-          placeholder="Start Typing Here"
+          placeholder="Type Here..."
           id=""
         ></textarea>
         <textarea
           [(ngModel)]="imageUrl"
           type="text"
-          class="outline-none w-full text-wrap p-4 text-sm rounded-xl h-14 border"
+          class="outline-none w-full text-wrap p-2 text-xs rounded-xl h-10 border"
           name=""
-          placeholder="Start Typing Here"
+          placeholder="Image Url"
           id=""
         ></textarea>
         <app-custom-button
+        [isOutline]="true"
           (onButtonTap)="submitPost()"
           class="self-end"
           btnText="Submit"
-          radius="rounded-full"
-          textSize="text-sm"
+          radius="rounded-lg"
+          textSize="text-xs"
         ></app-custom-button>
       </div>
       } @for (post of postService.posts; track $index) {
 
-      <div class="flex flex-col p-4 gap-4 bg-white w-full rounded-xl">
-        <app-user-tile [user]="post.user"></app-user-tile>
+      <div class="flex shadow-sm gap-2 flex-col py-2 border-neutral-200  bg-white w-full rounded-lg border">
+        <app-user-tile class="px-2" [user]="post.user"></app-user-tile>
         @if(post.description !== undefined && post.description.length > 0){
-        <p class="text-sm text-neutral-700">
+        <p class="text-sm px-4   text-neutral-700">
           {{ post.description }}
         </p>
         } @if(post.image !== undefined && post.image.length > 0){
         <img
-          class="object-cover h-80 rounded-xl"
+          class="aspect-auto object-cover "
           [src]="post.image"
           alt=""
           srcset=""
         />
         }
-        <div class="flex flex-row justify-between gap-6 w-full">
+        <div class="flex  px-4 flex-row items-center justify-between gap-6 w-full">
           <div class="flex flex-row items-center gap-4">
-            <div class="flex flex-row gap-2 items-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="h-5 w-5"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M6.633 10.25c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 0 1 2.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 0 0 .322-1.672V2.75a.75.75 0 0 1 .75-.75 2.25 2.25 0 0 1 2.25 2.25c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282m0 0h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 0 1-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 0 0-1.423-.23H5.904m10.598-9.75H14.25M5.904 18.5c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 0 1-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 9.953 4.167 9.5 5 9.5h1.053c.472 0 .745.556.5.96a8.958 8.958 0 0 0-1.302 4.665c0 1.194.232 2.333.654 3.375Z"
-                />
-              </svg>
+            <div class="flex flex-row gap-1 items-center">
+              <p class="text-neutral-600 text-sm" >Likes</p>
 
-              <h1>{{ post.likesCount }}</h1>
+              <h1 class="text-neutral-600 text-sm">{{ post.likesCount }}</h1>
             </div>
 
-            <div class="flex flex-row gap-2 items-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="size-5"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z"
-                />
-              </svg>
+            <div class="flex flex-row gap-1 items-center">
+              <p class="text-neutral-600 text-sm" >Comments</p>
 
-              <h1>{{ post.commentsCount }}</h1>
+              <h1 class="text-neutral-600 text-sm">{{ post.commentsCount }}</h1>
             </div>
 
-            <div class="flex flex-row gap-2 items-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="size-5"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z"
-                />
-              </svg>
+            <div class="flex flex-row gap-1 items-center">
+              <p class="text-neutral-600 text-sm" >Shares</p>
 
-              <h1>{{ post.sharesCount }}</h1>
+              <h1 class="text-neutral-600 text-sm">{{ post.sharesCount }}</h1>
             </div>
           </div>
 
-          <app-custom-button
+          <!-- <app-custom-button
             [isOutline]="false"
             radius="rounded-full"
             btnText="View More"
             textSize="text-xs"
           >
-          </app-custom-button>
+          </app-custom-button> -->
         </div>
       </div>
       }
     </div>
-    <div class="bg-white p-4 shrink-0 overflow-y-scroll flex flex-col w-[20%]">
+    <div class="shrink-0  overflow-y-scroll  gap-2 flex flex-col w-[17%] ">
+      <div class="flex bg-white rounded-lg border border-neutral-200 shadow-sm py-2 px-4 flex-col justify-center items-center gap-2">
+        <h1 class="font-semibold text-md">Profile</h1>
+        <img
+          [src]="user.avatar"
+          class="size-20 rounded-full object-cover bg-neutral-300"
+        />
+        <div class="flex flex-col items-center gap-">
+          <h1 class="text-md font-medium">
+            {{ user.first_name }}_{{ user.last_name }}
+          </h1>
+          <p class="text-xs text-neutral-400">{{ user.bio }}</p>
+        </div>
+  
+        <div class="flex flex-row divide-x p-2 items-center  w-full justify-between ">
+          <div class="flex flex-col  flex-1 justify-center items-center">
+            <h1 class="text-sm font-semibold">{{ user.posts }}</h1>
+            <p class="text-xs text-neutral-400">Posts</p>
+          </div>
+  
+          <div class="flex flex-col  flex-1 justify-center items-center">
+            <h1 class="text-sm font-semibold">{{ user.followers }}</h1>
+            <p class="text-xs text-neutral-400">Followers</p>
+          </div>
+  
+          <div class="flex flex-col  flex-1 justify-center items-center">
+            <h1 class="text-sm font-semibold">{{ user.following }}</h1>
+            <p class="text-xs text-neutral-400">Following</p>
+          </div>
+        </div>
+      </div>
+  
       <app-suggestions></app-suggestions>
     </div>
   </div>
