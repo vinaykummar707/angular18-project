@@ -1,0 +1,51 @@
+<div
+  class="flex bg-white rounded-lg border border-neutral-200 shadow-sm py-2 px-4 flex-col justify-center items-center gap-2"
+>
+  <h1 class="font-semibold text-md">Profile</h1>
+  <img
+    [src]="user.avatar"
+    class="size-20 rounded-full object-cover bg-neutral-300"
+  />
+  <div class="flex flex-col items-center gap-">
+    <h1 class="text-md font-medium">
+      {{ user.first_name }}_{{ user.last_name }}
+    </h1>
+    <p class="text-xs text-neutral-400">{{ user.bio }}</p>
+  </div>
+
+  <div class="flex flex-row divide-x p-2 items-center w-full justify-between">
+    <div class="flex flex-col flex-1 justify-center items-center">
+      <h1 class="text-sm font-semibold">{{ user.posts }}</h1>
+      <p class="text-xs text-neutral-400">Posts</p>
+    </div>
+
+    <div class="flex flex-col flex-1 justify-center items-center">
+      <h1 class="text-sm font-semibold">{{ user.followers }}</h1>
+      <p class="text-xs text-neutral-400">Followers</p>
+    </div>
+
+    <div class="flex flex-col flex-1 justify-center items-center">
+      <h1 class="text-sm font-semibold">{{ user.following }}</h1>
+      <p class="text-xs text-neutral-400">Following</p>
+    </div>
+  </div>
+</div>
+<div class="h-14 bg-white shadow-sm border border-neutral-200 rounded-lg">
+  <div class="flex flex-row grow justify-around items-center h-full w-full">
+    <!-- <h1 class="px-4 py-1 bg-neutral-200 rounded-full">Reels</h1> -->
+    @for (tab of tabs; track $index; let i = $index) { @if (activeTab === i) {
+    <h1 class="px-4 py-1 bg-neutral-200 rounded-full cursor-pointer">
+      {{ tab.tabName }}
+    </h1>
+    } @else {
+    <h1
+      (click)="onTabSelected(i)"
+      class="hover:border border-neutral-200 rounded-full px-4 py-1 cursor-pointer"
+    >
+      {{ tab.tabName }}
+    </h1>
+    } }
+  </div>
+</div>
+
+<router-outlet></router-outlet>

@@ -17,6 +17,8 @@ export class UserTileComponent {
     avatar: '',
   };
 
+  date = new Date().toUTCString()
+
   @Input() showButtons!: boolean;
 
   isFollowing: boolean = false;

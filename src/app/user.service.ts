@@ -7,7 +7,7 @@ import { User } from './types';
 export class UserService {
   user: User = {
     avatar:
-      'https://images.pexels.com/photos/21952102/pexels-photo-21952102/free-photo-of-a-car-parked-in-front-of-a-building-with-a-tree.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load',
+      'https://img.freepik.com/free-photo/digital-art-portrait-person-listening-music-headphones_23-2151065085.jpg?t=st=1718516838~exp=1718520438~hmac=16c6204c314eb45a756ff3fc20265ce4df9695e2c8d666e0e9ffcbbfc39a85a6&w=360',
     first_name: 'Vinay',
     last_name: 'Panuganti',
     email: 'vinay@email.com',
