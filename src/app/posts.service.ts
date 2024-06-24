@@ -14,6 +14,15 @@ export class PostsService {
       commentsCount: 0,
       description: "",
       id: "1",
+      image:"https://img.freepik.com/free-photo/digital-art-portrait-person-listening-music-headphones_23-2151065022.jpg?t=st=1719213677~exp=1719217277~hmac=826a640ae661e081b8bd4b85d59a47265a2680dd7565d0abeb13bcd9651e7364&w=740",
+      likesCount: 0,
+      sharesCount: 0,
+      user: this.userService.user
+    },
+    {
+      commentsCount: 0,
+      description: "",
+      id: "1",
       image:"https://img.freepik.com/free-photo/androgynous-avatar-non-binary-queer-person_23-2151100222.jpg?t=st=1718516938~exp=1718520538~hmac=30f14f1db34608431286c1e29d06635fcef459da7352fcce7776eb2ea901bfc1&w=740",
       likesCount: 0,
       sharesCount: 0,

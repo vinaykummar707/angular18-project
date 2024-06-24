@@ -9,6 +9,8 @@ import { UserTileComponent } from './user-tile/user-tile.component';
 import { MaincontentComponent } from './maincontent/maincontent.component';
 import { PostsService } from './posts.service';
 import { FormsModule, NgModel, NgModelGroup } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { incrementCounter } from './counter.actions';
 
 @Component({
   selector: 'app-root',
@@ -25,5 +27,10 @@ import { FormsModule, NgModel, NgModelGroup } from '@angular/forms';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
+  constructor(private store: Store<{ counter: number }>) {}
 
+  ngOnInit() {
+    this.store.select('counter').subscribe((value) => console.log(value));
+    this.store.dispatch(incrementCounter());
+  }
 }

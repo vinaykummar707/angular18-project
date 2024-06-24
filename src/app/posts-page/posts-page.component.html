@@ -40,7 +40,7 @@
       textSize="text-xs"
     ></app-custom-button>
   </div>
-  } @for (post of postService.posts; track $index) {
+  } @for (post of postService.posts.reverse(); track $index) {
 
   <div
     class="flex shadow-sm gap-2 flex-col py-2 border-neutral-200 bg-white w-full rounded-lg border"
